@@ -935,6 +935,10 @@ static int show_smap(struct seq_file *m, void *v)
 		seq_putc(m, '\n');
 	}
 
+<<<<<<< HEAD
+=======
+	if (!rollup_mode)
+>>>>>>> 3230d02a91e9 ([BACKPORT] susfs: Revive SUS_MAP feature)
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 		if (vma->vm_file &&
 			unlikely(file_inode(vma->vm_file)->i_mapping->flags & BIT_SUS_MAPS) &&
@@ -949,6 +953,7 @@ static int show_smap(struct seq_file *m, void *v)
 			goto bypass_orig_flow;
 		}
 #endif
+<<<<<<< HEAD
 	seq_printf(m,
 		   "Size:           %8lu kB\n"
 		   "KernelPageSize: %8lu kB\n"
@@ -961,6 +966,8 @@ static int show_smap(struct seq_file *m, void *v)
 	arch_show_smap(m, vma);
 	show_smap_vma_flags(m, vma);
 
+=======
+>>>>>>> 3230d02a91e9 ([BACKPORT] susfs: Revive SUS_MAP feature)
 		seq_printf(m,
 			   "Size:           %8lu kB\n"
 			   "KernelPageSize: %8lu kB\n"
@@ -971,6 +978,10 @@ static int show_smap(struct seq_file *m, void *v)
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 bypass_orig_flow:
 #endif
+<<<<<<< HEAD
+=======
+	if (!rollup_mode || last_vma)
+>>>>>>> 3230d02a91e9 ([BACKPORT] susfs: Revive SUS_MAP feature)
 		seq_printf(m,
 			   "Rss:            %8lu kB\n"
 			   "Pss:            %8lu kB\n"
@@ -1005,7 +1016,11 @@ bypass_orig_flow:
 			   (unsigned long)(mss->swap_pss >> (10 + PSS_SHIFT)),
 			   (unsigned long)(mss->pss_locked >> (10 + PSS_SHIFT)));
 
+<<<<<<< HEAD
 {
+=======
+	if (!rollup_mode) {
+>>>>>>> 3230d02a91e9 ([BACKPORT] susfs: Revive SUS_MAP feature)
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 		if (vma->vm_file &&
 			unlikely(file_inode(vma->vm_file)->i_mapping->flags & BIT_SUS_MAPS) &&
@@ -1019,6 +1034,9 @@ bypass_orig_flow:
 		arch_show_smap(m, vma);
 		show_smap_vma_flags(m, vma);
 	}
+<<<<<<< HEAD
+>>>>>>> 3230d02a91e9 ([BACKPORT] susfs: Revive SUS_MAP feature)
+=======
 >>>>>>> 3230d02a91e9 ([BACKPORT] susfs: Revive SUS_MAP feature)
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 bypass_orig_flow2:
