@@ -935,7 +935,6 @@ static int show_smap(struct seq_file *m, void *v)
 		seq_putc(m, '\n');
 	}
 
-	if (!rollup_mode)
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 		if (vma->vm_file &&
 			unlikely(file_inode(vma->vm_file)->i_mapping->flags & BIT_SUS_MAPS) &&
@@ -972,7 +971,6 @@ static int show_smap(struct seq_file *m, void *v)
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 bypass_orig_flow:
 #endif
-	if (!rollup_mode || last_vma)
 		seq_printf(m,
 			   "Rss:            %8lu kB\n"
 			   "Pss:            %8lu kB\n"
@@ -1007,7 +1005,7 @@ bypass_orig_flow:
 			   (unsigned long)(mss->swap_pss >> (10 + PSS_SHIFT)),
 			   (unsigned long)(mss->pss_locked >> (10 + PSS_SHIFT)));
 
-	if (!rollup_mode) {
+{
 #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 		if (vma->vm_file &&
 			unlikely(file_inode(vma->vm_file)->i_mapping->flags & BIT_SUS_MAPS) &&
