@@ -10,6 +10,9 @@ BUILD_TYPE="SUKISU"
 DATE="$(TZ=Asia/Jakarta date +%Y%m%d%H%M%S)"
 KERNEL_NAME="SukiSuA16${BUILD_TYPE}-${DATE}.zip"
 
+# Clone SukiSU repo
+if [ ! -d "KernelSU" ]; then curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-main; fi
+
 function KERNEL_COMPILE() {
 	if [ "$1" == "install" ]; then
 		# Download required package
@@ -18,8 +21,8 @@ function KERNEL_COMPILE() {
 
 	# Set environment variables
 	export USE_CCACHE=1
-	export KBUILD_BUILD_HOST=eperiday
-	export KBUILD_BUILD_USER=Happy
+	export KBUILD_BUILD_HOST=hp
+	export KBUILD_BUILD_USER=Android
 
 	# Create output directory and do a clean build
 	rm -rf out && mkdir -p out
@@ -90,9 +93,6 @@ function KERNEL_RESULT() {
 	if [ ! -f ${KERNEL_PATH}/Image ]; then
 		exit 1
 	fi
-
-	# Apply kpm
-	KERNEL_PATCH
 
 	# Create anykernel
 	rm -rf anykernel
