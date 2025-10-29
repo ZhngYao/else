@@ -8,7 +8,7 @@ KERNEL_PATH=out/arch/arm64/boot
 # Set kernel name
 BUILD_TYPE="SUKISU"
 DATE="$(TZ=Asia/Jakarta date +%Y%m%d%H%M%S)"
-KERNEL_NAME="SukiSuA16${BUILD_TYPE}-${DATE}.zip"
+KERNEL_NAME="Gabut${BUILD_TYPE}-${DATE}.zip"
 
 function KERNEL_COMPILE() {
 	if [ "$1" == "install" ]; then
