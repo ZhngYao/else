@@ -6,7 +6,7 @@ set -e
 KERNEL_PATH=out/arch/arm64/boot
 
 # Set kernel name
-BUILD_TYPE="SUKISU"
+BUILD_TYPE="Apatch"
 DATE="$(TZ=Asia/Jakarta date +%Y%m%d%H%M%S)"
 KERNEL_NAME="SukiSuA16${BUILD_TYPE}-${DATE}.zip"
 
@@ -18,8 +18,8 @@ function KERNEL_COMPILE() {
 
 	# Set environment variables
 	export USE_CCACHE=1
-	export KBUILD_BUILD_HOST=nvem
-	export KBUILD_BUILD_USER=Zhao
+	export KBUILD_BUILD_HOST=gcorprjk
+	export KBUILD_BUILD_USER=@Nntazho
 
 	# Create output directory and do a clean build
 	rm -rf out && mkdir -p out
@@ -91,13 +91,10 @@ function KERNEL_RESULT() {
 		exit 1
 	fi
 
-	# Apply kpm
-	KERNEL_PATCH
-
 	# Create anykernel
 	rm -rf anykernel
 	git clone https://github.com/ZhngYao/AnyKernel3.git anykernel
-	
+
 	# Copying image
 	cp ${KERNEL_PATH}/Image.gz-dtb anykernel/
 
